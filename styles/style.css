@@ -327,6 +327,23 @@ footer ul a:hover {
   transition: var(--transition);
   color: var(--color-white);
 }
+/* !======================  SINGLE POST ====================== */
+.single-post {
+  margin: 6rem 0 2rem;
+}
+.single-post_container {
+  width: var(--form-width);
+  background: var(--color-gray-900);
+  padding: 1rem 2rem 3rem;
+}
+.single-post_thumbnail {
+  margin: 1.5rem 0 1rem;
+}
+.single-post_container p {
+  margin-top: 1rem;
+  line-height: 1.7;
+}
+
 /* !======================  MEDIA QUERIES (MEDIUM DEVICES) ====================== */
 
 @media screen and (max-width: 1024px) {
@@ -485,5 +502,10 @@ footer ul a:hover {
   /* !blog  */
   .search_bar-container {
     width: var(--container-width-md);
+  }
+  /* !sing post  */
+  .single-post_container {
+    background: transparent;
+    padding: 0;
   }
 }
