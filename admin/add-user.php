@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Multi Page Website</title>
-    <!-- ?custom css  -->
-    <link rel="stylesheet" href="styles/style.css" />
-    <!-- ?unicons cdn -->
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-    />
-  </head>
-  <body>
+<?php
+include 'partials/header.php';
+?>
+
+    <!-- ! add user  -->
     <section class="form_section">
       <div class="container form_section-container">
-        <h2>Sign Up</h2>
+        <h2>Add User</h2>
         <div class="alert_message error">
           <p>This is an error message</p>
         </div>
@@ -26,18 +16,18 @@
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Create Password" />
           <input type="password" placeholder="Confirm Password" />
+          <select name="" id="">
+            <option value="0">Author</option>
+            <option value="1">Admin</option>
+          </select>
           <div class="form_control">
             <label for="avatar">User Avatar</label>
             <input type="file" id="avatar" />
           </div>
-          <button type="submit" class="btn">Sign Up</button>
-          <small
-            >Already have an account? <a href="signin.html">Sign In</a></small
-          >
+          <button type="submit" class="btn">Add User</button>
         </form>
       </div>
     </section>
-
-    <script src="scripts/main.js"></script>
-  </body>
-</html>
+<?php
+include '../partials/footer.php'
+?>
