@@ -1,2 +1,7 @@
-<?php 
-define('ROOT_URL','http://localhost/blog-project/');
+<?php
+define('ROOT_URL', 'http://localhost/blog-project/');
+
+define('DB_HOST', 'localhost');
+define('DB_USER', 'kabir');
+define('DB_PASS', 'admin');
+define('DB_NAME', 'blog-php');

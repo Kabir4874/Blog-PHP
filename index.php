@@ -9,9 +9,9 @@ include 'partials/header.php';
       <img src="./assets/blog1.jpg" alt="blog" />
     </div>
     <div class="post_info">
-      <a href="category-posts.html" class="category_button">Wild Life</a>
+      <a href="category-posts.php" class="category_button">Wild Life</a>
       <h2 class="post_title">
-        <a href="post.html">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <a href="post.php">Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Expedita, nostrum?</a>
       </h2>
       <p class="post_body">
@@ -40,9 +40,9 @@ include 'partials/header.php';
         <img src="./assets/blog2.jpg" alt="blog" />
       </div>
       <div class="post_info">
-        <a href="category-posts.html" class="category_button">Wild Life</a>
+        <a href="category-posts.php" class="category_button">Wild Life</a>
         <h3 class="post_title">
-          <a href="post.html">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum,
+          <a href="post.php">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum,
             accusamus.</a>
         </h3>
         <p class="post_body">
