@@ -1,5 +1,5 @@
 <?php
-define('ROOT_URL', 'http://localhost/blog-project/');
+define('ROOT_URL', 'http://localhost/blog-php/');
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'kabir');
