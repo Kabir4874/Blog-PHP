@@ -8,6 +8,22 @@ $query = "SELECT * FROM users WHERE NOT id=$current_admin_id";
 $result = mysqli_query($connection, $query);
 ?>
 <section class="dashboard">
+  <?php if (isset($_SESSION['add-user-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['add-user-success'];
+        unset($_SESSION['add-user-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
+  <?php if (isset($_SESSION['edit-user-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['edit-user-success'];
+        unset($_SESSION['edit-user-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
   <div class="container dashboard_container">
     <button id="show_sidebar-btn" class="sidebar_toggle">
       <i class="uil uil-angle-right-b"></i>
