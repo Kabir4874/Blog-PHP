@@ -18,7 +18,7 @@ unset($_SESSION['signup-data']);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Blog Application - PHP</title>
+  <title>Blog Application - PHP</title>
   <!-- ?custom css  -->
   <link rel="stylesheet" href="styles/style.css" />
   <!-- ?unicons cdn -->
@@ -41,7 +41,7 @@ unset($_SESSION['signup-data']);
         </div>
       <?php endif ?>
 
-      <form action="<?= ROOT_URL ?>signup-logic.php" enctype="multipart/form-data" method="POST">
+      <form action="<?= ROOT_URL ?>logic/signup-logic.php" enctype="multipart/form-data" method="POST">
         <input type="text" name="firstname" placeholder="First Name" value="<?= $firstname ?>" />
         <input type="text" name="lastname" placeholder="Last Name" value="<?= $lastname ?>" />
         <input type="text" name="username" placeholder="Username" value="<?= $username ?>" />
