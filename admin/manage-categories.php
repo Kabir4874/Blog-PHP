@@ -1,7 +1,18 @@
 <?php
 include 'partials/header.php';
+$query = "SELECT * FROM categories ORDER BY title ASC";
+$categories = mysqli_query($connection, $query);
+
 ?>
 <section class="dashboard">
+  <?php if (isset($_SESSION['add-category-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['add-category-success'];
+        unset($_SESSION['add-category-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
   <div class="container dashboard_container">
     <button id="show_sidebar-btn" class="sidebar_toggle">
       <i class="uil uil-angle-right-b"></i>
@@ -56,27 +67,22 @@ include 'partials/header.php';
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Travel</td>
-            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-            <td>
-              <a href="delete-category.php" class="btn sm danger">Delete</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Travel</td>
-            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-            <td>
-              <a href="delete-category.php" class="btn sm danger">Delete</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Travel</td>
-            <td><a href="edit-category.php" class="btn sm">Edit</a></td>
-            <td>
-              <a href="delete-category.php" class="btn sm danger">Delete</a>
-            </td>
-          </tr>
+          <?php
+          if (mysqli_num_rows($result) > 0) {
+            while ($category = mysqli_fetch_assoc($categories)): ?>
+              <tr>
+                <td><?= $category['title'] ?></td>
+                <td><a href="<?= ROOT_URL ?>admin/edit-category.php?id=<?= $category['id'] ?>" class="btn sm">Edit</a></td>
+                <td>
+                  <a href="<?= ROOT_URL ?>admin/logic/delete-category-logic.php?id=<?= $category['id'] ?>" class="btn sm danger">Delete</a>
+                </td>
+              </tr>
+            <?php endwhile;
+          } else { ?>
+            <tr>
+              <td colspan="5" style="text-align: center;">No categories found</td>
+            </tr>
+          <?php } ?>
         </tbody>
       </table>
     </main>

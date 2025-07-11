@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
   $result = mysqli_query($connection, $query);
   $user = mysqli_fetch_assoc($result);
 } else {
-  header('location: ' . ROOT_URL . 'admin/manager-users.php');
+  header('location: ' . ROOT_URL . 'admin/manage-users.php');
   die();
 }
 ?>

@@ -96,17 +96,24 @@ $result = mysqli_query($connection, $query);
           </tr>
         </thead>
         <tbody>
-          <?php while ($user = mysqli_fetch_assoc($result)): ?>
+          <?php
+          if (mysqli_num_rows($result) > 0) {
+            while ($user = mysqli_fetch_assoc($result)): ?>
+              <tr>
+                <td><?= $user['firstname'] . " " . $user['lastname'] ?></td>
+                <td><?= $user['username'] ?></td>
+                <td><a href="<?= ROOT_URL ?>admin/edit-user.php?id=<?= $user['id'] ?>" class="btn sm">Edit</a></td>
+                <td>
+                  <a href="<?= ROOT_URL ?>admin/logic/delete-user-logic.php?id=<?= $user['id'] ?>" class="btn sm danger">Delete</a>
+                </td>
+                <td><?= $user['is_admin'] == 0 ? "No" : "Yes" ?></td>
+              </tr>
+            <?php endwhile;
+          } else { ?>
             <tr>
-              <td><?= $user['firstname'] . " " . $user['lastname'] ?></td>
-              <td><?= $user['username'] ?></td>
-              <td><a href="<?= ROOT_URL ?>admin/edit-user.php?id=<?= $user['id'] ?>" class="btn sm">Edit</a></td>
-              <td>
-                <a href="<?= ROOT_URL ?>admin/logic/delete-user-logic.php?id=<?= $user['id'] ?>" class="btn sm danger">Delete</a>
-              </td>
-              <td><?= $user['is_admin'] == 0 ? "No" : "Yes" ?></td>
+              <td colspan="5" style="text-align: center;">No users found</td>
             </tr>
-          <?php endwhile ?>
+          <?php } ?>
         </tbody>
       </table>
     </main>
