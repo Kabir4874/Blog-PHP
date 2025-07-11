@@ -24,6 +24,22 @@ $result = mysqli_query($connection, $query);
       </p>
     </div>
   <?php endif ?>
+  <?php if (isset($_SESSION['delete-user'])): ?>
+    <div class="alert_message error container">
+      <p>
+        <?= $_SESSION['delete-user'];
+        unset($_SESSION['delete-user']) ?>
+      </p>
+    </div>
+  <?php endif ?>
+  <?php if (isset($_SESSION['delete-user-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['delete-user-success'];
+        unset($_SESSION['delete-user-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
   <div class="container dashboard_container">
     <button id="show_sidebar-btn" class="sidebar_toggle">
       <i class="uil uil-angle-right-b"></i>
@@ -86,7 +102,7 @@ $result = mysqli_query($connection, $query);
               <td><?= $user['username'] ?></td>
               <td><a href="<?= ROOT_URL ?>admin/edit-user.php?id=<?= $user['id'] ?>" class="btn sm">Edit</a></td>
               <td>
-                <a href="<?= ROOT_URL ?>admin/delete-user.php" class="btn sm danger">Delete</a>
+                <a href="<?= ROOT_URL ?>admin/logic/delete-user-logic.php?id=<?= $user['id'] ?>" class="btn sm danger">Delete</a>
               </td>
               <td><?= $user['is_admin'] == 0 ? "No" : "Yes" ?></td>
             </tr>

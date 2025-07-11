@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 
                 $avatar_name = $time . $avatar['name'];
                 $avatar_tmp_name = $avatar['tmp_name'];
-                $avatar_destination_path = '../../assets' . $avatar_name;
+                $avatar_destination_path = '../../assets/' . $avatar_name;
 
                 // make sure file is an image 
                 $allowed_files = ['png', 'jpg', 'jpeg', 'webp'];
