@@ -16,9 +16,15 @@ if (isset($_GET['id'])) {
 <section class="form_section">
   <div class="container form_section-container">
     <h2>Edit Category</h2>
-    <div class="alert_message error">
-      <p>This is an error message</p>
-    </div>
+    <?php
+    if (isset($_SESSION['edit-category'])): ?>
+      <div class="alert_message error">
+        <p>
+          <?= $_SESSION['edit-category'];
+          unset($_SESSION['edit-category']) ?>
+        </p>
+      </div>
+    <?php endif ?>
     <form action="<?= ROOT_URL ?>admin/logic/edit-category-logic.php" method="POST">
       <input type="hidden" name="id" value="<?= $category['id'] ?>">
       <input type="text" name="title" placeholder="Title" value="<?= $category['title'] ?>" />
