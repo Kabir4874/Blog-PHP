@@ -1,5 +1,13 @@
 <?php
 include 'partials/header.php';
+
+// fetch current user's posts 
+$current_user_id = $_SESSION['user-id'];
+
+$query = "SELECT id, title, category_id FROM posts WHERE author_id=$current_user_id ORDER BY id DESC ";
+
+$posts = mysqli_query($connection, $query);
+
 ?>
 <section class="dashboard">
   <div class="container dashboard_container">
@@ -57,14 +65,23 @@ include 'partials/header.php';
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Testing</td>
-            <td>Test</td>
-            <td><a href="edit-post.php" class="btn sm">Edit</a></td>
-            <td>
-              <a href="delete-post.php" class="btn sm danger">Delete</a>
-            </td>
-          </tr>
+          <?php
+          if (mysqli_num_rows($posts) > 0) {
+            while ($post = mysqli_fetch_assoc($posts)): ?>
+              <tr>
+                <td><?= $post['title'] ?></td>
+                <td>Test</td>
+                <td><a href="edit-post.php" class="btn sm">Edit</a></td>
+                <td>
+                  <a href="delete-post.php" class="btn sm danger">Delete</a>
+                </td>
+              </tr>
+            <?php endwhile;
+          } else { ?>
+            <tr>
+              <td colspan="5" style="text-align: center;">No posts found</td>
+            </tr>
+          <?php } ?>
         </tbody>
       </table>
     </main>
