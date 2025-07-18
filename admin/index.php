@@ -68,12 +68,18 @@ $posts = mysqli_query($connection, $query);
           <?php
           if (mysqli_num_rows($posts) > 0) {
             while ($post = mysqli_fetch_assoc($posts)): ?>
+              <?php
+              $category_id = $post['category_id'];
+              $category_query = "SELECT title FROM categories WHERE id=$category_id";
+              $category_result = mysqli_query($connection, $category_query);
+              $category = mysqli_fetch_assoc($category_result);
+              ?>
               <tr>
                 <td><?= $post['title'] ?></td>
-                <td>Test</td>
-                <td><a href="edit-post.php" class="btn sm">Edit</a></td>
+                <td><?= $category['title'] ?></td>
+                <td><a href="<?= ROOT_URL ?>admin/edit-post.php?id=<?= $post['id'] ?>" class="btn sm">Edit</a></td>
                 <td>
-                  <a href="delete-post.php" class="btn sm danger">Delete</a>
+                  <a href="<?= ROOT_URL ?>admin/logic/delete-post-logic.php?id=<?= $post['id'] ?>" class="btn sm danger">Delete</a>
                 </td>
               </tr>
             <?php endwhile;
