@@ -21,6 +21,14 @@ $categories = mysqli_query($connection, $query);
       </p>
     </div>
   <?php endif ?>
+  <?php if (isset($_SESSION['delete-category-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['delete-category-success'];
+        unset($_SESSION['delete-category-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
   <div class="container dashboard_container">
     <button id="show_sidebar-btn" class="sidebar_toggle">
       <i class="uil uil-angle-right-b"></i>
