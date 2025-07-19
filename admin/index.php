@@ -10,6 +10,30 @@ $posts = mysqli_query($connection, $query);
 
 ?>
 <section class="dashboard">
+  <?php if (isset($_SESSION['add-post-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['add-post-success'];
+        unset($_SESSION['add-post-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
+  <?php if (isset($_SESSION['edit-post-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['edit-post-success'];
+        unset($_SESSION['edit-post-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
+  <?php if (isset($_SESSION['delete-post-success'])): ?>
+    <div class="alert_message success container">
+      <p>
+        <?= $_SESSION['delete-post-success'];
+        unset($_SESSION['delete-post-success']) ?>
+      </p>
+    </div>
+  <?php endif ?>
   <div class="container dashboard_container">
     <button id="show_sidebar-btn" class="sidebar_toggle">
       <i class="uil uil-angle-right-b"></i>
