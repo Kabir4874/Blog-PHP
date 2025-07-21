@@ -397,7 +397,7 @@ footer ul a:hover {
   background: var(--color-green-light);
   color: var(--color-green);
 }
-.alert_message.lg{
+.alert_message.lg {
   text-align: center;
 }
 form {

@@ -1,55 +1,47 @@
 <?php
 include 'partials/header.php';
+
+// fetch post from database if id is set 
+if (isset($_GET['id'])) {
+  $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+  $query = "SELECT * FROM posts WHERE id=$id";
+  $result = mysqli_query($connection, $query);
+  $post = mysqli_fetch_assoc($result);
+} else {
+  header('location: ' . ROOT_URL . 'blog.php');
+  die();
+}
 ?>
 
-    <!-- !single post  -->
-    <section class="single-post">
-      <div class="container single-post_container">
-        <h2>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
-          repudiandae?
-        </h2>
-        <div class="post_author">
-          <div class="post_author-avatar">
-            <img src="./assets/avatar3.jpg" alt="avatar" />
-          </div>
-          <div class="post_author-info">
-            <h5>By: John Mills</h5>
-            <small>June 13, 2025 - 10:34</small>
-          </div>
-        </div>
-        <div class="single-post_thumbnail">
-          <img src="/assets/blog33.jpg" alt="blog" />
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel eum
-          corrupti tempore quos. Harum unde consectetur cumque cupiditate
-          officia! Ipsam adipisci tempora illo at nemo itaque labore
-          necessitatibus hic consequatur ab, earum esse fugiat quasi aperiam
-          dolorum laborum quos! Minima!
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia
-          iusto voluptatem, unde nam repudiandae nisi rerum reiciendis
-          distinctio eius placeat recusandae minima debitis, sed quo
-          necessitatibus quis quod illum? Adipisci ullam maxime molestiae
-          temporibus blanditiis nisi sapiente at nulla architecto iusto?
-          Asperiores cumque ducimus rerum, quam, debitis tenetur amet sunt a at
-          totam deleniti. A, corporis?
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel
-          voluptatibus officiis, laudantium adipisci, illo vero maiores facilis
-          ab sunt repellendus ipsam mollitia tenetur at tempora nihil laboriosam
-          impedit fuga dignissimos? Reiciendis enim laboriosam quo fuga harum
-          repellendus, fugit veniam, quia blanditiis nam necessitatibus
-          praesentium numquam ex perspiciatis amet consequuntur tempora.
-          Doloribus, qui accusamus officia, quisquam consequuntur eius saepe
-          optio inventore temporibus voluptates tenetur praesentium repudiandae,
-          officiis itaque sapiente in iste.
-        </p>
+<!-- !single post  -->
+<section class="single-post">
+  <div class="container single-post_container">
+    <h2>
+      <?= $post['title'] ?>
+    </h2>
+    <div class="post_author">
+      <?php
+      $author_id = $post['author_id'];
+      $author_query = "SELECT firstname,lastname,avatar FROM users WHERE id=$author_id";
+      $author_result = mysqli_query($connection, $author_query);
+      $author = mysqli_fetch_assoc($author_result);
+      ?>
+      <div class="post_author-avatar">
+        <img src="./assets/<?= $author['avatar'] ?>" alt="avatar" />
       </div>
-    </section>
+      <div class="post_author-info">
+        <h5>By: <?= $author['firstname'] . " " . $author['lastname'] ?></h5>
+        <small><?= date("M d, Y - H:i", strtotime($post['date_time'])) ?></small>
+      </div>
+    </div>
+    <div class="single-post_thumbnail">
+      <img src="./assets/<?= $post['thumbnail'] ?>" alt="blog" />
+    </div>
+    <p>
+      <?= $post['body'] ?>
+    </p>
+  </div>
+</section>
 <?php
 include 'partials/footer.php'
 ?>
